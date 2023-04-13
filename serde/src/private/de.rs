@@ -230,8 +230,8 @@ mod content {
         I32(i32),
         I64(i64),
 
-        F32(f32),
-        F64(f64),
+        // F32(f32),
+        // F64(f64),
 
         Char(char),
         String(String),
@@ -271,8 +271,8 @@ mod content {
                 Content::I16(n) => Unexpected::Signed(n as i64),
                 Content::I32(n) => Unexpected::Signed(n as i64),
                 Content::I64(n) => Unexpected::Signed(n),
-                Content::F32(f) => Unexpected::Float(f as f64),
-                Content::F64(f) => Unexpected::Float(f),
+                // Content::F32(f) => Unexpected::Float(f as f64),
+                // Content::F64(f) => Unexpected::Float(f),
                 Content::Char(c) => Unexpected::Char(c),
                 Content::String(ref s) => Unexpected::Str(s),
                 Content::Str(s) => Unexpected::Str(s),
@@ -379,18 +379,18 @@ mod content {
             Ok(Content::U64(value))
         }
 
-        fn visit_f32<F>(self, value: f32) -> Result<Self::Value, F>
+        fn visit_f32<F>(self, _value: f32) -> Result<Self::Value, F>
         where
             F: de::Error,
         {
-            Ok(Content::F32(value))
+            unreachable!()
         }
 
-        fn visit_f64<F>(self, value: f64) -> Result<Self::Value, F>
+        fn visit_f64<F>(self, _value: f64) -> Result<Self::Value, F>
         where
             F: de::Error,
         {
-            Ok(Content::F64(value))
+            unreachable!()
         }
 
         fn visit_char<F>(self, value: char) -> Result<Self::Value, F>
@@ -1029,8 +1029,8 @@ mod content {
             V: Visitor<'de>,
         {
             match self.content {
-                Content::F32(v) => visitor.visit_f32(v),
-                Content::F64(v) => visitor.visit_f64(v),
+                // Content::F32(v) => visitor.visit_f32(v),
+                // Content::F64(v) => visitor.visit_f64(v),
                 Content::U8(v) => visitor.visit_u8(v),
                 Content::U16(v) => visitor.visit_u16(v),
                 Content::U32(v) => visitor.visit_u32(v),
@@ -1095,8 +1095,8 @@ mod content {
                 Content::I16(v) => visitor.visit_i16(v),
                 Content::I32(v) => visitor.visit_i32(v),
                 Content::I64(v) => visitor.visit_i64(v),
-                Content::F32(v) => visitor.visit_f32(v),
-                Content::F64(v) => visitor.visit_f64(v),
+                // Content::F32(v) => visitor.visit_f32(v),
+                // Content::F64(v) => visitor.visit_f64(v),
                 Content::Char(v) => visitor.visit_char(v),
                 Content::String(v) => visitor.visit_string(v),
                 Content::Str(v) => visitor.visit_borrowed_str(v),
@@ -1772,8 +1772,8 @@ mod content {
             V: Visitor<'de>,
         {
             match *self.content {
-                Content::F32(v) => visitor.visit_f32(v),
-                Content::F64(v) => visitor.visit_f64(v),
+                // Content::F32(v) => visitor.visit_f32(v),
+                // Content::F64(v) => visitor.visit_f64(v),
                 Content::U8(v) => visitor.visit_u8(v),
                 Content::U16(v) => visitor.visit_u16(v),
                 Content::U32(v) => visitor.visit_u32(v),
@@ -1844,8 +1844,8 @@ mod content {
                 Content::I16(v) => visitor.visit_i16(v),
                 Content::I32(v) => visitor.visit_i32(v),
                 Content::I64(v) => visitor.visit_i64(v),
-                Content::F32(v) => visitor.visit_f32(v),
-                Content::F64(v) => visitor.visit_f64(v),
+                // Content::F32(v) => visitor.visit_f32(v),
+                // Content::F64(v) => visitor.visit_f64(v),
                 Content::Char(v) => visitor.visit_char(v),
                 Content::String(ref v) => visitor.visit_str(v),
                 Content::Str(v) => visitor.visit_borrowed_str(v),
